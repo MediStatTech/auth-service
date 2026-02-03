@@ -2,21 +2,75 @@ package pkg
 
 import (
 	"context"
+	"fmt"
+	"io"
+	"os"
 
+	db "github.com/MediStatTech/auth-service/internal/infra/db"
+	pkg_commitplan "github.com/MediStatTech/auth-service/pkg/commitplan"
+	"github.com/MediStatTech/auth-service/pkg/config"
 	"github.com/MediStatTech/commitplan"
 	"github.com/MediStatTech/jwt"
 	"github.com/MediStatTech/logger"
-	"github.com/MediStatTech/auth-service/pkg/config"
 )
 
 type Facade struct {
 	Committer *commitplan.Facade
+	Postgres  *db.DB
 	JWT       *jwt.JWT
 	Logger    *logger.Logger
 	Config    *config.Config
 }
 
-
 func New(ctx context.Context) (*Facade, error) {
-	return &Facade{}, nil
+	config, err := config.NewConfig()
+	if err != nil {
+		return nil, fmt.Errorf("failed to create config: %w", err)
+	}
+
+	db, err := initDB(ctx, config)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create database: %w", err)
+	}
+
+	committer := initCommitter(db)
+	jwt := initJWT(config)
+	logger := initLogger()
+
+	return &Facade{
+		Committer: committer,
+		Postgres:  db,
+		JWT:       jwt,
+		Logger:    logger,
+		Config:    config,
+	}, nil
+}
+
+func initDB(ctx context.Context, config *config.Config) (*db.DB, error) {
+
+	db, err := db.New(&db.Config{
+		Host:     config.DBHost,
+		Port:     config.DBPort,
+		User:     config.DBUser,
+		Password: config.DBPassword,
+		Database: config.DBName,
+	})
+	if err != nil {
+		return nil, fmt.Errorf("failed to create database: %w", err)
+	}
+
+	return db, nil
+}
+
+func initCommitter(db *db.DB) *commitplan.Facade {
+	return pkg_commitplan.NewCommitter(db.DB)
+}
+
+func initJWT(config *config.Config) *jwt.JWT {
+	return jwt.New(config.JWTSecretKey, config.JWTDuration)
+}
+
+func initLogger() *logger.Logger {
+	// TODO: Implement logger configuration
+	return logger.New(io.Writer(os.Stdout))
 }
