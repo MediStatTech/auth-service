@@ -23,7 +23,7 @@ type StaffProps struct {
 	PositionID     string
 	FirstName      string
 	LastName       string
-	email          string
+	Email          string
 	PasswordHash   []byte
 	PasswordSalt   []byte
 	Status         string
@@ -73,7 +73,7 @@ func ReconstituteStaff(p StaffProps) *Staff {
 		positionID:     p.PositionID,
 		firstName:      p.FirstName,
 		lastName:       p.LastName,
-		email:          p.email,
+		email:          p.Email,
 		passwordHash:   p.PasswordHash,
 		passwordSalt:   p.PasswordSalt,
 		status:         p.Status,
