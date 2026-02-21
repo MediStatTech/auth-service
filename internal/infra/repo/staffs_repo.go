@@ -70,6 +70,29 @@ func (r *StaffsRepository) ListByPosition(ctx context.Context, positionID string
 	return result, nil
 }
 
+func (r *StaffsRepository) Get(ctx context.Context) ([]domain.StaffProps, error) {
+	staffs, err := r.queries.ListStaffs(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	result := make([]domain.StaffProps, 0, len(staffs))
+	for _, staff := range staffs {
+		result = append(result, toStaffProps(staff))
+	}
+
+	return result, nil
+}
+
+func (r *StaffsRepository) Find(ctx context.Context, staffID string) (domain.StaffProps, error) {
+	staff, err := r.queries.GetStaff(ctx, staffID)
+	if err != nil {
+		return domain.StaffProps{}, err
+	}
+
+	return toStaffProps(staff), nil
+}
+
 func (r *StaffsRepository) Count(ctx context.Context) (int64, error) {
 	return r.queries.CountStaffs(ctx)
 }

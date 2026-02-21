@@ -1,5 +1,5 @@
-github.com/MediStatTech/auth-client v0.0.0-20260201160645-cd724df02f6c h1:21Cwj2IrhqYw1mql5byOuwW5lkE20jNgauTK+XEzxEk=
-github.com/MediStatTech/auth-client v0.0.0-20260201160645-cd724df02f6c/go.mod h1:3wTMATME4ao5lgZjsKMjS+t0UPe1mT8gN7iuMXzZt3c=
+github.com/MediStatTech/auth-client v0.0.0-20260221115108-0f7236239522 h1:D7iMubq3mixOmB7UBrIxVwM6dHN6QQ5cMZNb+hFrQuk=
+github.com/MediStatTech/auth-client v0.0.0-20260221115108-0f7236239522/go.mod h1:3wTMATME4ao5lgZjsKMjS+t0UPe1mT8gN7iuMXzZt3c=
 github.com/MediStatTech/commitplan v1.0.2 h1:+/e5irGJzx2tP3PpropByzHW8p0cI4t7F8UwsnAD5FQ=
 github.com/MediStatTech/commitplan v1.0.2/go.mod h1:7l2tM5g5yYDUoICNKr08ZtQhBGjkeNP5/TQYswhCxY8=
 github.com/MediStatTech/error v1.0.2-0.20260125154041-7fc22d7175ff h1:/BQxpJognXEkXpYT+vIZmVVBHYGcGh4bBEhvfKYzSoI=

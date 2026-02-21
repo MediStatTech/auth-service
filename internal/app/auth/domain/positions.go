@@ -45,12 +45,10 @@ func (p *Position) Name() string         { return p.name }
 func (p *Position) UpdatedAt() *time.Time { return p.updatedAt }
 func (p *Position) CreatedAt() time.Time { return p.createdAt }
 
-func (p *Position) SetName(name string) *Position {
+func (p *Position) SetName(name string)  {
 	p.name = name
-	return p
 }
 
-func (p *Position) SetUpdatedAt(updatedAt time.Time) *Position {
+func (p *Position) SetUpdatedAt(updatedAt time.Time) {
 	p.updatedAt = &updatedAt
-	return p
 }

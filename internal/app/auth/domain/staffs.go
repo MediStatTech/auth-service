@@ -97,64 +97,52 @@ func (s *Staff) SelfieThumbURL() *string { return s.selfieThumbURL }
 func (s *Staff) UpdatedAt() *time.Time   { return s.updatedAt }
 func (s *Staff) CreatedAt() time.Time    { return s.createdAt }
 
-func (s *Staff) SetFirstName(firstName string) *Staff {
+func (s *Staff) SetFirstName(firstName string)  {
 	s.firstName = firstName
-	return s
 }
 
-func (s *Staff) SetLastName(lastName string) *Staff {
+func (s *Staff) SetLastName(lastName string)  {
 	s.lastName = lastName
-	return s
 }
 
-func (s *Staff) SetPasswordHash(passwordHash []byte) *Staff {
+func (s *Staff) SetPasswordHash(passwordHash []byte)  {
 	s.passwordHash = passwordHash
-	return s
 }
 
-func (s *Staff) SetPasswordSalt(passwordSalt []byte) *Staff {
+func (s *Staff) SetPasswordSalt(passwordSalt []byte)  {
 	s.passwordSalt = passwordSalt
-	return s
 }
 
-func (s *Staff) SetStatus(status StaffStatus) *Staff {
+func (s *Staff) SetStatus(status StaffStatus)  {
 	s.status = status.String()
-	return s
 }
 
-func (s *Staff) SetActiveStatus() *Staff {
+func (s *Staff) SetActiveStatus()  {
 	s.status = StaffStatusActive.String()
-	return s
 }
 
-func (s *Staff) SetInactiveStatus() *Staff {
+func (s *Staff) SetInactiveStatus()  {
 	s.status = StaffStatusInactive.String()
-	return s
 }
 
-func (s *Staff) SetSuspendedStatus() *Staff {
+func (s *Staff) SetSuspendedStatus()  {
 	s.status = StaffStatusSuspended.String()
-	return s
 }
 
-func (s *Staff) SetSelfieURL(selfieURL string) *Staff {
+func (s *Staff) SetSelfieURL(selfieURL string)  {
 	s.selfieURL = &selfieURL
-	return s
 }
 
-func (s *Staff) SetSelfieThumbURL(selfieThumbURL string) *Staff {
+func (s *Staff) SetSelfieThumbURL(selfieThumbURL string)  {
 	s.selfieThumbURL = &selfieThumbURL
-	return s
 }
 
-func (s *Staff) SetPositionID(positionID string) *Staff {
+func (s *Staff) SetPositionID(positionID string)  {
 	s.positionID = positionID
-	return s
 }
 
-func (s *Staff) SetUpdatedAt(updatedAt time.Time) *Staff {
+func (s *Staff) SetUpdatedAt(updatedAt time.Time)  {
 	s.updatedAt = &updatedAt
-	return s
 }
 
 func (s *Staff) FullName() string {

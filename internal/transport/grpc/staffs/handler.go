@@ -3,6 +3,8 @@ package staffs
 import (
 	"github.com/MediStatTech/auth-service/internal/app/auth/usecases/staffs/create"
 	"github.com/MediStatTech/auth-service/internal/app/auth/usecases/staffs/deactivate"
+	"github.com/MediStatTech/auth-service/internal/app/auth/usecases/staffs/get"
+	"github.com/MediStatTech/auth-service/internal/app/auth/usecases/staffs/retrieve"
 	"github.com/MediStatTech/auth-service/internal/app/auth/usecases/staffs/sign_in"
 	s_options "github.com/MediStatTech/auth-service/internal/app/options"
 	"github.com/MediStatTech/logger"
@@ -19,8 +21,8 @@ type Commands struct {
 	CreateStaff     *create.Interactor
 	DeactivateStaff *deactivate.Interactor
 	SignIn          *sign_in.Interactor
-	// FindStaff       *find.Interactor
-	// ListStaff       *list.Interactor
+	GetStaffs       *get.Interactor
+	RetrieveStaff   *retrieve.Interactor
 }
 
 func New(opts *s_options.Options) *Handler {
@@ -30,6 +32,8 @@ func New(opts *s_options.Options) *Handler {
 			CreateStaff:     opts.App.Auth.CreateStaff,
 			DeactivateStaff: opts.App.Auth.DeactivateStaff,
 			SignIn:          opts.App.Auth.SignIn,
+			GetStaffs:       opts.App.Auth.GetStaffs,
+			RetrieveStaff:   opts.App.Auth.RetrieveStaff,
 		},
 	}
 }

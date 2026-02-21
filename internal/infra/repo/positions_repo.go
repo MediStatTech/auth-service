@@ -31,6 +31,20 @@ func (r *PositionsRepository) GetByID(ctx context.Context, positionID string) (d
 	return toPositionProps(pos), nil
 }
 
+func (r *PositionsRepository) Get(ctx context.Context) ([]domain.PositionProps, error) {
+	positions, err := r.queries.ListPositions(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	result := make([]domain.PositionProps, 0, len(positions))
+	for _, pos := range positions {
+		result = append(result, toPositionProps(pos))
+	}
+
+	return result, nil
+}
+
 func (r *PositionsRepository) GetByName(ctx context.Context, name string) (domain.PositionProps, error) {
 	pos, err := r.queries.GetPositionByName(ctx, name)
 	if err != nil {
